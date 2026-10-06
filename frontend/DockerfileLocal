@@ -1,0 +1,38 @@
+FROM node:22-alpine AS deps
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+
+FROM node:22-alpine AS builder
+WORKDIR /app
+ARG NEXT_PUBLIC_LARAVEL_API_URL
+ARG NEXT_PUBLIC_APP_URL
+ENV NEXT_PUBLIC_LARAVEL_API_URL=${NEXT_PUBLIC_LARAVEL_API_URL}
+ENV NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine AS runner
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package*.json ./
+EXPOSE 3000
+CMD ["npm", "run", "start"]
+
+#docker system prune -a
+#chmod +x start.sh
+#npm run build
+#sudo docker build -t programandoweb/migo-fit-frontend:frontend .
+#sudo docker run -d --name migo-fit-frontend-frontend  -p3055:3000 --restart=always programandoweb/migo-fit-frontend:frontend
+
+
+#sudo docker push programandoweb/migo-fit-frontend:frontend
+#sudo docker pull programandoweb/migo-fit-frontend:frontend
+
+
+#sudo docker stop migo-fit-frontend
+#sudo docker rm migo-fit-frontend
