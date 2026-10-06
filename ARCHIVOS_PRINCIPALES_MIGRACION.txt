@@ -1,0 +1,30 @@
+BACKEND
+- database/migrations/2026_07_15_000001_create_fit_training_tables.php
+- database/seeders/data/migo_fit_legacy.json
+- database/seeders/MigoFitLegacySeeder.php
+- app/Console/Commands/ImportFitLegacy.php
+- app/Domain/Fit/Enums/FitRole.php
+- app/Models/Fit/*
+- app/Services/Fit/*
+- app/Http/Requests/V1/Fit/*
+- app/Http/Controllers/V1/Fit/*
+- routes/fit/api.php
+- routes/api.php
+
+FRONTEND
+- lib/api/server.ts
+- lib/api/errors.ts
+- lib/auth.ts
+- lib/db.ts
+- hooks/useLaravelApi.ts
+- app/api/laravel/[...path]/route.ts
+- app/actions.ts
+- páginas SSR ajustadas para consumir Laravel
+- Dockerfile, docker-compose.yml, .env.example y README.md
+
+ELIMINADO DEL FRONTEND
+- data/dev.db, data/dev.db-shm, data/dev.db-wal
+- scripts/init-db.mjs
+- types/node-sqlite.d.ts
+- lib/security.ts
+- DATABASE_URL y SESSION_SECRET locales
