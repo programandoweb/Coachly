@@ -1,0 +1,21 @@
+services:
+  migo-fit-frontend:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_LARAVEL_API_URL: "${NEXT_PUBLIC_LARAVEL_API_URL:-https://backend.brianhenao.programandoweb.net/api/v1}"
+        NEXT_PUBLIC_APP_URL: "${NEXT_PUBLIC_APP_URL:-https://brianhenao.programandoweb.net}"
+    container_name: migo-fit-trainer-frontend
+    restart: unless-stopped
+    ports:
+      - "3055:3000"
+    environment:
+      # El navegador llama directo a Laravel; no hay Server Components/Actions de por medio.
+      NEXT_PUBLIC_LARAVEL_API_URL: "https://backend.brianhenao.programandoweb.net/api/v1"
+      NEXT_PUBLIC_APP_URL: "https://brianhenao.programandoweb.net"
+
+      # Cookie legible por el navegador (respaldo de localStorage) para construir Authorization: Bearer.
+      NEXT_PUBLIC_FIT_BROWSER_TOKEN_COOKIE_NAME: "migo_fit_bearer_token"
+      NEXT_PUBLIC_FIT_DEBUG_API: "false"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
