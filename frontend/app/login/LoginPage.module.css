@@ -1,0 +1,320 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: clamp(14px, 3vw, 32px);
+  background:
+    radial-gradient(circle at 50% 12%, rgba(124, 92, 255, 0.22), transparent 35%),
+    #0a0b10;
+  color: #fff;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 430px);
+  min-height: min(860px, calc(100dvh - 28px));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 38px;
+  isolation: isolate;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+  background: #0b0d14;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: url('/images/login-gym-fullscreen.png') center 42% / cover no-repeat;
+  transform: scale(1.015);
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(180deg, rgba(5, 9, 3, 0.12) 0%, rgba(5, 9, 3, 0.03) 34%, rgba(7, 13, 4, 0.64) 60%, #090b12 100%),
+    radial-gradient(circle at 50% 22%, transparent 20%, rgba(2, 5, 1, 0.2) 100%);
+}
+
+.content {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 34px 26px max(30px, env(safe-area-inset-bottom));
+}
+
+.brand {
+  position: absolute;
+  top: max(24px, env(safe-area-inset-top));
+  left: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  color: #111;
+  background: #8b6cff;
+  box-shadow: 0 8px 22px rgba(139, 108, 255, 0.28);
+}
+
+.copy {
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.65);
+}
+
+.eyebrow {
+  margin: 0 0 3px;
+  color: #a998ff;
+  font-size: clamp(22px, 6vw, 30px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.05;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(27px, 7vw, 38px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 850;
+}
+
+.subtitle {
+  max-width: 330px;
+  margin: 12px auto 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form {
+  display: grid;
+  gap: 11px;
+}
+
+.field {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.74);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  min-height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 0 16px 0 48px;
+  outline: 0;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font: inherit;
+  box-sizing: border-box;
+  transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.input:focus {
+  border-color: rgba(139, 108, 255, 0.75);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 4px rgba(139, 108, 255, 0.1);
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 9px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.68);
+  background: transparent;
+  cursor: pointer;
+}
+
+.passwordToggle:focus-visible {
+  outline: 2px solid rgba(139, 108, 255, 0.72);
+  outline-offset: 1px;
+}
+
+.passwordInput {
+  padding-right: 52px;
+}
+
+.submit {
+  min-height: 54px;
+  border: 0;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #101807;
+  background: #8b6cff;
+  font: inherit;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(124, 92, 255, 0.22);
+  transition: transform 160ms ease, filter 160ms ease, opacity 160ms ease;
+}
+
+.submit:hover:not(:disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.submit:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.82);
+  outline-offset: 3px;
+}
+
+.submit:disabled {
+  cursor: wait;
+  opacity: 0.68;
+}
+
+.error {
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 120, 120, 0.34);
+  border-radius: 13px;
+  padding: 11px 13px;
+  color: #ffd0d0;
+  background: rgba(132, 17, 17, 0.52);
+  backdrop-filter: blur(10px);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.helper {
+  margin: 14px 0 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+@media (min-width: 760px) {
+  .card {
+    width: min(92vw, 460px);
+    min-height: min(900px, calc(100dvh - 54px));
+  }
+}
+
+@media (max-height: 720px) {
+  .card {
+    min-height: calc(100dvh - 20px);
+    border-radius: 30px;
+  }
+
+  .content {
+    padding-top: 96px;
+  }
+
+  .copy {
+    margin-bottom: 15px;
+  }
+
+  .subtitle,
+  .helper {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0;
+    background: #080a10;
+  }
+
+  .card {
+    width: 100%;
+    min-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .content {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+.success {
+  margin-bottom: 12px;
+  border: 1px solid rgba(139, 108, 255, 0.34);
+  border-radius: 13px;
+  padding: 11px 13px;
+  color: #dfffaf;
+  background: rgba(54, 91, 0, 0.52);
+  backdrop-filter: blur(10px);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.forgotPassword,
+.secondaryAction {
+  border: 0;
+  padding: 2px 0;
+  color: rgba(255, 255, 255, 0.78);
+  background: transparent;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+  cursor: pointer;
+}
+
+.secondaryAction {
+  min-height: 42px;
+  text-align: center;
+}
+
+.forgotPassword:hover,
+.secondaryAction:hover {
+  color: #a998ff;
+}
+
+
+/* Coachly commercial skin */
+.card::before { background-position: center 38%; filter: saturate(.72) contrast(1.08); }
+.card::after { background: linear-gradient(180deg, rgba(5,7,13,.1) 0%, rgba(5,7,13,.18) 34%, rgba(8,9,16,.78) 62%, #080a10 100%), radial-gradient(circle at 50% 20%, rgba(77,210,255,.08), transparent 34%); }
+.brand { text-transform:none; letter-spacing:-.02em; font-size:16px; }
+.brandMark { border-radius:11px 18px 11px 18px; background:linear-gradient(135deg,#9d7dff,#4dd2ff); color:white; box-shadow:0 12px 28px rgba(124,92,255,.34); }
+.eyebrow { font-style:normal; font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+.title { max-width:360px; margin-inline:auto; }
+.submit { color:white; background:linear-gradient(135deg,#7c5cff,#4d9dff); box-shadow:0 14px 32px rgba(124,92,255,.26); }
+.input:focus { border-color:rgba(139,108,255,.82); box-shadow:0 0 0 4px rgba(139,108,255,.12); }
